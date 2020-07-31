@@ -57,10 +57,6 @@ public class TelegramServiceImpl implements TelegramService
         TelegramCommand command = TelegramCommand.getCommand(message.getText());
         TelegramAction telegramAction = context.getBean(command.getClassN(), TelegramAction.class);
 
-        String sendMessage = TelegramMessageBuilder.newInstance()
-                .append("test")
-                .build();
-
-        telegramAction.run(chatId, sendMessage);
+        telegramAction.run(chatId, update.getMessage().getText());
     }
 }
